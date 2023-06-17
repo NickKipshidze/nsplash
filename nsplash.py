@@ -5,7 +5,7 @@ ESC = "\x1B"
 
 BLOCKS = "▁▂▃▄▅▆▇█▓▒░"
 
-color_fg = lambda code, bold = False: f"{ESC}[{int(bold)};{code}m"
+colcode = lambda code, bold = False: f"{ESC}[{int(bold)};{code}m"
 
 def generate_wave() -> str:
     length: int = os.get_terminal_size().columns
@@ -27,7 +27,7 @@ def generate_wave() -> str:
 def output_wave(wave: str, animate: bool = True, delay: float = 0.01) -> None:
     length: int = len(wave)
 
-    print(color_fg(random.randint(31, 36)))
+    print(colcode(random.randint(31, 36)))
 
     if animate:
         for char in range(length//2, length+1):
